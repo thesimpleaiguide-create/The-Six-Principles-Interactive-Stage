@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Six Principles - Interactive Stage</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ttnNavy: '#0C2340',
+                        ttnTrustBlue: '#005EB8',
+                        ttnActionOrange: '#FE5000',
+                        ttnSlate: '#333F48',
+                        ttnIceBlue: '#DBE2E9'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for clinical/conceptual icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth transition for the focus stage content */
+        .stage-enter {
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-transparent m-0 p-4 md:p-8 font-sans text-ttnSlate antialiased w-full h-full flex flex-col items-center justify-center min-h-[500px]">
+
+    <div class="w-full max-w-6xl mx-auto space-y-8">
+        
+        <!-- Header -->
+        <div class="text-center space-y-3 mb-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-ttnNavy tracking-tight">The Six Principles</h2>
+            <p class="text-base text-slate-600 max-w-3xl mx-auto">Briefly. These sit underneath everything that follows. You'll feel them at work in the skills on the next few pages. <span class="font-semibold text-ttnTrustBlue">Select a principle to explore.</span></p>
+        </div>
+
+        <!-- Interactive Dashboard Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            <!-- Left Column: Navigation Buttons -->
+            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+                
+                <button onclick="selectPrinciple(1)" id="btn-1" class="principle-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white text-ttnNavy font-semibold hover:border-ttnTrustBlue/50 hover:bg-ttnIceBlue/30 transition-all duration-200 flex items-center justify-between group">
+                    <span class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm group-hover:bg-ttnTrustBlue group-hover:text-white transition-colors icon-bg">1</span>
+                        Express Empathy
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-ttnTrustBlue transition-colors"></i>
+                </button>
+
+                <button onclick="selectPrinciple(2)" id="btn-2" class="principle-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white text-ttnNavy font-semibold hover:border-ttnTrustBlue/50 hover:bg-ttnIceBlue/30 transition-all duration-200 flex items-center justify-between group">
+                    <span class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm group-hover:bg-ttnTrustBlue group-hover:text-white transition-colors icon-bg">2</span>
+                        Develop Discrepancy
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-ttnTrustBlue transition-colors"></i>
+                </button>
+
+                <button onclick="selectPrinciple(3)" id="btn-3" class="principle-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white text-ttnNavy font-semibold hover:border-ttnTrustBlue/50 hover:bg-ttnIceBlue/30 transition-all duration-200 flex items-center justify-between group">
+                    <span class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm group-hover:bg-ttnTrustBlue group-hover:text-white transition-colors icon-bg">3</span>
+                        Avoid Argument
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-ttnTrustBlue transition-colors"></i>
+                </button>
+
+                <button onclick="selectPrinciple(4)" id="btn-4" class="principle-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white text-ttnNavy font-semibold hover:border-ttnTrustBlue/50 hover:bg-ttnIceBlue/30 transition-all duration-200 flex items-center justify-between group">
+                    <span class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm group-hover:bg-ttnTrustBlue group-hover:text-white transition-colors icon-bg">4</span>
+                        Roll with Resistance
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-ttnTrustBlue transition-colors"></i>
+                </button>
+
+                <button onclick="selectPrinciple(5)" id="btn-5" class="principle-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white text-ttnNavy font-semibold hover:border-ttnTrustBlue/50 hover:bg-ttnIceBlue/30 transition-all duration-200 flex items-center justify-between group">
+                    <span class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm group-hover:bg-ttnTrustBlue group-hover:text-white transition-colors icon-bg">5</span>
+                        Support Self-Efficacy
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-ttnTrustBlue transition-colors"></i>
+                </button>
+
+                <button onclick="selectPrinciple(6)" id="btn-6" class="principle-btn w-full text-left p-4 rounded-xl border-2 border-slate-200 bg-white text-ttnNavy font-semibold hover:border-ttnTrustBlue/50 hover:bg-ttnIceBlue/30 transition-all duration-200 flex items-center justify-between group">
+                    <span class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-sm group-hover:bg-ttnTrustBlue group-hover:text-white transition-colors icon-bg">6</span>
+                        Assess Confidence
+                    </span>
+                    <i class="fa-solid fa-chevron-right text-slate-300 group-hover:text-ttnTrustBlue transition-colors"></i>
+                </button>
+
+            </div>
+
+            <!-- Right Column: Focus Stage -->
+            <div class="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-lg p-8 md:p-12 min-h-[300px] flex items-center justify-center relative overflow-hidden">
+                
+                <!-- Default Empty State -->
+                <div id="defaultState" class="text-center text-slate-400">
+                    <i class="fa-solid fa-hand-pointer text-5xl mb-4 opacity-50 text-ttnTrustBlue"></i>
+                    <p class="text-lg font-medium">Select a principle on the left to view details.</p>
+                </div>
+
+                <!-- Dynamic Content Container -->
+                <div id="activeState" class="hidden w-full flex-col items-start text-left">
+                    <div class="w-16 h-16 rounded-2xl bg-ttnIceBlue text-ttnTrustBlue flex items-center justify-center mb-6">
+                        <i id="stageIcon" class="fa-solid fa-eye text-3xl"></i>
+                    </div>
+                    <h3 id="stageTitle" class="text-3xl md:text-4xl font-bold text-ttnNavy mb-4 tracking-tight">Express Empathy</h3>
+                    <p id="stageText" class="text-lg md:text-xl text-slate-600 leading-relaxed border-l-4 border-ttnTrustBlue pl-5 py-1">
+                        See the world through your patient's eyes. Without judging it.
+                    </p>
+                </div>
+                
+                <!-- Decorative background blob -->
+                <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-ttnIceBlue rounded-full opacity-20 blur-3xl pointer-events-none"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Audio Player for Voiceovers -->
+    <audio id="principleAudio" preload="auto"></audio>
+
+    <script>
+        const principlesData = {
+            1: {
+                title: "Express Empathy",
+                text: "See the world through your patient's eyes. Without judging it.",
+                icon: "fa-eye",
+                audio: "vo_principle_1.wav"
+            },
+            2: {
+                title: "Develop Discrepancy",
+                text: "Help your patient notice the gap between where they are and where they want to be.",
+                icon: "fa-scale-unbalanced",
+                audio: "vo_principle_2.wav"
+            },
+            3: {
+                title: "Avoid Argument",
+                text: "Arguing for change invites arguing against it. Every time.",
+                icon: "fa-handshake-angle",
+                audio: "vo_principle_3.wav"
+            },
+            4: {
+                title: "Roll with Resistance",
+                text: "Resistance isn't a wall to push through. It's a signal to shift your approach.",
+                icon: "fa-water",
+                audio: "vo_principle_4.wav"
+            },
+            5: {
+                title: "Support Self-Efficacy",
+                text: "Your patient needs to believe change is possible for them, specifically.",
+                icon: "fa-seedling",
+                audio: "vo_principle_5.wav"
+            },
+            6: {
+                title: "Assess Confidence",
+                text: "Wanting to change and believing you can are two different questions. Ask both.",
+                icon: "fa-clipboard-question",
+                audio: "vo_principle_6.wav"
+            }
+        };
+
+        const audioPlayer = document.getElementById('principleAudio');
+        const defaultState = document.getElementById('defaultState');
+        const activeState = document.getElementById('activeState');
+        const stageIcon = document.getElementById('stageIcon');
+        const stageTitle = document.getElementById('stageTitle');
+        const stageText = document.getElementById('stageText');
+
+        function selectPrinciple(id) {
+            // 1. Reset all buttons visually
+            document.querySelectorAll('.principle-btn').forEach(btn => {
+                btn.classList.remove('bg-ttnTrustBlue', 'text-white', 'border-ttnTrustBlue');
+                btn.classList.add('bg-white', 'text-ttnNavy', 'border-slate-200');
+                
+                // Reset numbers inside buttons
+                const numBadge = btn.querySelector('.icon-bg');
+                numBadge.classList.remove('bg-white', 'text-ttnTrustBlue');
+                numBadge.classList.add('bg-slate-100', 'text-slate-500');
+
+                // Reset chevron
+                const chevron = btn.querySelector('.fa-chevron-right');
+                chevron.classList.remove('text-white');
+                chevron.classList.add('text-slate-300');
+            });
+
+            // 2. Highlight selected button
+            const activeBtn = document.getElementById(`btn-${id}`);
+            activeBtn.classList.remove('bg-white', 'text-ttnNavy', 'border-slate-200');
+            activeBtn.classList.add('bg-ttnTrustBlue', 'text-white', 'border-ttnTrustBlue');
+            
+            const activeNumBadge = activeBtn.querySelector('.icon-bg');
+            activeNumBadge.classList.remove('bg-slate-100', 'text-slate-500', 'group-hover:bg-ttnTrustBlue', 'group-hover:text-white');
+            activeNumBadge.classList.add('bg-white', 'text-ttnTrustBlue');
+
+            const activeChevron = activeBtn.querySelector('.fa-chevron-right');
+            activeChevron.classList.remove('text-slate-300', 'group-hover:text-ttnTrustBlue');
+            activeChevron.classList.add('text-white');
+
+            // 3. Update the Focus Stage data
+            const data = principlesData[id];
+            
+            // Remove animation class to trigger reflow
+            activeState.classList.remove('stage-enter');
+            void activeState.offsetWidth; // trigger reflow magic
+            
+            defaultState.classList.add('hidden');
+            activeState.classList.remove('hidden');
+            
+            // Update content
+            stageIcon.className = `fa-solid ${data.icon} text-3xl`;
+            stageTitle.textContent = data.title;
+            stageText.textContent = data.text;
+            
+            // Re-apply animation class
+            activeState.classList.add('stage-enter');
+
+            // 4. Play audio mapping
+            audioPlayer.src = data.audio;
+            audioPlayer.currentTime = 0;
+            audioPlayer.play().catch(e => {
+                console.log("Audio autoplay waiting for initial user interaction.");
+            });
+        }
+    </script>
+</body>
+</html>
